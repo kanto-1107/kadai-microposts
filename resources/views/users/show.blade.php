@@ -19,7 +19,7 @@
             @include('microposts.microposts')
             
             
-                    
+            
       </div>
 </div>
 @endsection

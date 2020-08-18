@@ -27,19 +27,18 @@
                 </div>
                 
                 @if (Auth::id() != $user->id)
-
-                    @if (Auth::user()->is_favorite($micropost->id))
-                        {{-- お気に入り解除ボタンのフォーム --}}
-                        {!! Form::open(['route' => ['user.unfavorite', $micropost->id], 'method' => 'delete']) !!}
-                            {!! Form::submit('Unfavorites', ['class' => "btn btn-danger btn-block"]) !!}
-                        {!! Form::close() !!}
-                    @else
-                        {{-- お気に入り登録のフォーム --}}
-                        {!! Form::open(['route' => ['user.favorite', $micropost->id]]) !!}
-                            {!! Form::submit('Favorites', ['class' => "btn btn-primary btn-block"]) !!}
-                        {!! Form::close() !!}
-                    @endif
-                @endif
+    @if (Auth::user()->is_favorite($user->id))
+        {{-- お気に入り解除ボタンのフォーム --}}
+        {!! Form::open(['route' => ['user.unfavorite', $user->id], 'method' => 'delete']) !!}
+            {!! Form::submit('Unfavorites', ['class' => "btn btn-danger btn-block"]) !!}
+        {!! Form::close() !!}
+    @else
+        {{-- お気に入り登録のフォーム --}}
+        {!! Form::open(['route' => ['user.favorite', $user->id]]) !!}
+            {!! Form::submit('Favorites', ['class' => "btn btn-primary btn-block"]) !!}
+        {!! Form::close() !!}
+    @endif
+@endif
             </li>
         @endforeach
     </ul>
